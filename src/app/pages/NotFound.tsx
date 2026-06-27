@@ -2,15 +2,17 @@ import { Link } from "react-router";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#050608] flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent mb-4">
+    <div className="min-h-screen bg-ivory flex items-center justify-center">
+      <div className="text-center px-6">
+        <h1 className="font-display text-[64px] font-medium text-navy-deep mb-4">
           404
         </h1>
-        <p className="text-gray-400 mb-8">Página no encontrada</p>
+        <p className="text-ink-soft mb-8 font-light">
+          Esta página no existe o fue movida.
+        </p>
         <Link
           to="/"
-          className="px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-500 hover:to-violet-500 transition-all"
+          className="inline-block px-7 py-3.5 bg-navy-deep text-white text-[13.5px] font-medium tracking-wide hover:bg-cyan transition-colors"
         >
           Volver al inicio
         </Link>

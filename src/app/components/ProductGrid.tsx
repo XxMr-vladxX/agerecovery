@@ -1,49 +1,114 @@
 import { motion } from "motion/react";
-import { ShoppingCart } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
 
-// IMPORTACIÓN DIRECTA (subiendo dos niveles desde src/app/components)
-// Reemplaza tus líneas de importación actuales por estas:
-import R9Image from "/src/app/assets/R9.png";
-import CPUImage from "/src/app/assets/CPU.png";
-import GWImage from "/src/app/assets/GW.png";
-import ERImage from "/src/app/assets/ER.png";
-
-const products = [
-  { id: 1, title: "Resident Evil: Requiem", category: "Survival Horror", price: "499.00", image: R9Image },
-  { id: 2, title: "Cyberpunk 2077", category: "RPG Acción", price: "1,199.00", image: CPUImage },
-  { id: 3, title: "God of War Ragnarök", category: "Acción Aventura", price: "1,399.00", image: GWImage },
-  { id: 4, title: "Elden Ring", category: "Action RPG", price: "1,299.00", image: ERImage },
+const services = [
+  {
+    num: "01",
+    title: "Bioestimulación facial",
+    tags: ["Colágeno", "Firmeza"],
+    desc: "Activa la producción natural de colágeno y elastina mediante bioestimuladores de última generación, devolviendo densidad y firmeza a la piel desde la dermis profunda.",
+  },
+  {
+    num: "02",
+    title: "Ácido hialurónico de alta densidad",
+    tags: ["Volumen", "Contorno"],
+    desc: "Restauración de volumen en pómulos, óvalo facial y surcos nasogenianos con técnica de microcánula, priorizando resultados naturales y proporcionados.",
+  },
+  {
+    num: "03",
+    title: "Toxina botulínica terapéutica",
+    tags: ["Líneas de expresión", "Prevención"],
+    desc: "Suaviza líneas dinámicas en frente, entrecejo y patas de gallo, con dosificación milimétrica que respeta la expresividad natural del rostro.",
+  },
+  {
+    num: "04",
+    title: "Hilos tensores PDO",
+    tags: ["Lifting", "Sin cirugía"],
+    desc: "Efecto lifting inmediato y progresivo mediante hilos reabsorbibles que estimulan colágeno nuevo mientras reposicionan tejidos descendidos.",
+  },
+  {
+    num: "05",
+    title: "Skinbooster y mesoterapia",
+    tags: ["Hidratación profunda", "Luminosidad"],
+    desc: "Hidratación intradérmica de larga duración que mejora textura, elasticidad y luminosidad sin alterar volúmenes faciales.",
+  },
+  {
+    num: "06",
+    title: "Rejuvenecimiento con plasma rico en plaquetas",
+    tags: ["Regeneración celular", "100% autólogo"],
+    desc: "Tu propio plasma concentrado, reinyectado para acelerar la regeneración celular y mejorar la calidad general de la piel de forma biocompatible.",
+  },
 ];
 
 export default function ProductGrid() {
   return (
-    <section id="coleccion-destacada" className="relative py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <Card key={product.id} className="bg-black/40 border-gray-800 p-4">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
-                <img 
-                  src={product.image} 
-                  alt={product.title} 
-                  className="w-full h-full object-cover" 
-                  onError={(e) => {
-                    console.error("Error al cargar:", product.image);
-                    e.currentTarget.src = "https://via.placeholder.com/300"; // Fallback visual
-                  }}
-                />
+    <section id="servicios" className="py-28 md:py-32 bg-ivory">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mb-16"
+        >
+          <div className="flex items-center gap-3 mb-5">
+            <span className="w-7 h-px bg-gold" />
+            <span className="text-[12px] tracking-[0.18em] uppercase text-cyan font-semibold">
+              Tratamientos faciales
+            </span>
+          </div>
+          <h2 className="font-display font-normal text-[30px] md:text-[40px] leading-[1.16] text-navy-deep tracking-tight">
+            Un protocolo distinto para cada tipo de piel, cada edad y cada
+            objetivo.
+          </h2>
+          <p className="text-[15.5px] text-ink-soft leading-relaxed font-light mt-5">
+            Cada tratamiento parte de un diagnóstico individual. No ofrecemos
+            paquetes genéricos: construimos el plan facial según tu biotipo de
+            piel, tu edad biológica y tus metas estéticas.
+          </p>
+        </motion.div>
+
+        <div className="flex flex-col">
+          {services.map((s, i) => (
+            <motion.div
+              key={s.num}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className={`group grid grid-cols-1 md:grid-cols-[90px_1fr_1.1fr] gap-6 md:gap-10 py-10 border-t border-navy/10 ${
+                i === services.length - 1 ? "border-b" : ""
+              }`}
+            >
+              <div className="font-display text-[15px] text-gold font-medium pt-1 group-hover:text-cyan transition-colors">
+                {s.num}
               </div>
-              <h3 className="text-lg font-semibold text-white">{product.title}</h3>
-              <p className="text-violet-400 text-sm mb-2">{product.category}</p>
-              <div className="flex justify-between items-center">
-                <span className="text-xl font-bold text-white">${product.price} MXN</span>
-                <Button size="sm" className="bg-violet-600">
-                  <ShoppingCart className="w-4 h-4 mr-2" /> Agregar
-                </Button>
+              <div>
+                <h3 className="font-display text-[24px] md:text-[25px] font-medium text-navy-deep mb-3 tracking-tight">
+                  {s.title}
+                </h3>
+                <div className="flex gap-2 flex-wrap">
+                  {s.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] text-cyan border border-cyan-soft bg-cyan-pale px-3 py-1.5 rounded-full font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </Card>
+              <div>
+                <p className="text-[14.5px] leading-relaxed text-ink-soft font-light">
+                  {s.desc}
+                </p>
+                <a
+                  href="#contacto"
+                  className="inline-flex items-center gap-2 mt-4 text-[13px] font-medium text-navy-deep border-b border-transparent hover:border-navy-deep hover:text-cyan transition-colors"
+                >
+                  Conocer protocolo →
+                </a>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

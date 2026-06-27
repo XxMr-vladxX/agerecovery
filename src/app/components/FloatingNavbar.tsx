@@ -1,40 +1,45 @@
-import { ShoppingCart, Search, User } from "lucide-react";
+import logoSymbol from "../assets/logo-symbol.png";
 
 export default function FloatingNavbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 px-8 py-4">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-ivory/90 backdrop-blur-md border-b border-navy/10 px-8 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <span className="text-violet-500 font-bold text-2xl">🎮</span>
-          <h1 className="text-xl font-bold text-white">GameVerse</h1>
-        </div>
-
-        {/* Navegación */}
-        <div className="flex gap-8 text-sm text-gray-300">
-          <a href="/" className="hover:text-white transition-colors">
-            Home
-          </a>
-          <a href="#coleccion-destacada" className="hover:text-white transition-colors">
-            Colección Destacada
-          </a>
-          {/* Este enlace apunta directamente al ID de tu VideoSection */}
-          <a href="#experimenta-futuro" className="hover:text-white transition-colors">
-            Experimenta el Futuro
-          </a>
-        </div>
-
-        {/* Iconos */}
-        <div className="flex items-center gap-6 text-gray-400">
-          <Search className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <User className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <div className="relative">
-            <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-            <span className="absolute -top-2 -right-2 bg-violet-600 text-[10px] text-white w-4 h-4 flex items-center justify-center rounded-full">
-              3
+        <a href="/" className="flex items-center gap-3">
+          <img src={logoSymbol} alt="Age Recovery" className="h-10 w-auto" />
+          <div className="leading-tight">
+            <h1 className="text-[19px] font-display font-medium text-navy-deep tracking-tight">
+              Age Recovery
+            </h1>
+            <span className="block text-[9.5px] font-sans font-semibold tracking-[0.16em] text-cyan uppercase">
+              Medicina estética
             </span>
           </div>
+        </a>
+
+        {/* Navegación */}
+        <div className="hidden md:flex gap-10 text-[13.5px] text-ink-soft font-medium">
+          <a href="#servicios" className="hover:text-navy transition-colors">
+            Tratamientos
+          </a>
+          <a href="#metodo" className="hover:text-navy transition-colors">
+            Método
+          </a>
+          <a href="#filosofia" className="hover:text-navy transition-colors">
+            Filosofía
+          </a>
+          <a href="#resultados" className="hover:text-navy transition-colors">
+            Resultados
+          </a>
         </div>
+
+        {/* CTA */}
+        <a
+          href="#contacto"
+          className="bg-navy-deep text-white px-6 py-[11px] text-[13px] font-medium tracking-wide hover:bg-cyan transition-colors"
+        >
+          Agendar valoración
+        </a>
       </div>
     </nav>
   );
