@@ -18,8 +18,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # 1. Navegar a la carpeta del proyecto en el VPS (ajusta el nombre de la carpeta)
-            cd ~/GameVerse
+           # 1. Navegar a la carpeta del proyecto en el VPS
+                cd ~/age-recovery
             
             # 2. Descargar los últimos cambios de GitHub
             git pull origin main
