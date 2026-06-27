@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 export default function HeroSection() {
   return (
@@ -31,18 +32,18 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-wrap items-center gap-5 mb-14">
-              <a
-                href="#contacto"
+              <Link
+                to="/contacto"
                 className="bg-navy-deep text-white px-8 py-4 text-[13.5px] font-medium tracking-wide hover:bg-cyan transition-colors"
               >
                 Agendar valoración
-              </a>
-              <a
-                href="#servicios"
+              </Link>
+              <Link
+                to="/tratamientos"
                 className="flex items-center gap-2 text-[13.5px] font-medium text-navy-deep border-b border-navy-deep pb-1 hover:text-cyan hover:border-cyan transition-colors"
               >
                 Ver tratamientos →
-              </a>
+              </Link>
             </div>
 
             <div className="flex gap-11 pt-8 border-t border-navy/10 max-w-[460px]">

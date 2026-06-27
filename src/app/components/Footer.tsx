@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import logoSymbol from "../assets/logo-symbol.png";
 
 export default function Footer() {
@@ -23,24 +24,24 @@ export default function Footer() {
           </h6>
           <ul className="space-y-3 text-[13.5px] font-light">
             <li>
-              <a href="#servicios" className="hover:text-cyan transition-colors">
+              <Link to="/tratamientos/bioestimulacion-facial" className="hover:text-cyan transition-colors">
                 Bioestimulación
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#servicios" className="hover:text-cyan transition-colors">
+              <Link to="/tratamientos/acido-hialuronico" className="hover:text-cyan transition-colors">
                 Ácido hialurónico
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#servicios" className="hover:text-cyan transition-colors">
+              <Link to="/tratamientos/toxina-botulinica" className="hover:text-cyan transition-colors">
                 Toxina botulínica
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#servicios" className="hover:text-cyan transition-colors">
+              <Link to="/tratamientos/hilos-tensores" className="hover:text-cyan transition-colors">
                 Hilos tensores
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -51,19 +52,19 @@ export default function Footer() {
           </h6>
           <ul className="space-y-3 text-[13.5px] font-light">
             <li>
-              <a href="#metodo" className="hover:text-cyan transition-colors">
+              <Link to="/medico" className="hover:text-cyan transition-colors">
+                Dr. Responsable
+              </Link>
+            </li>
+            <li>
+              <Link to="/metodo" className="hover:text-cyan transition-colors">
                 Nuestro método
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#filosofia" className="hover:text-cyan transition-colors">
+              <Link to="/filosofia" className="hover:text-cyan transition-colors">
                 Filosofía
-              </a>
-            </li>
-            <li>
-              <a href="#resultados" className="hover:text-cyan transition-colors">
-                Casos clínicos
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -74,14 +75,14 @@ export default function Footer() {
           </h6>
           <ul className="space-y-3 text-[13.5px] font-light">
             <li>
-              <a href="#contacto" className="hover:text-cyan transition-colors">
+              <Link to="/contacto" className="hover:text-cyan transition-colors">
                 Agendar valoración
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contacto" className="hover:text-cyan transition-colors">
+              <Link to="/contacto" className="hover:text-cyan transition-colors">
                 WhatsApp directo
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

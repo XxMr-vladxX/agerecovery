@@ -1,10 +1,7 @@
 import FloatingNavbar from "../components/FloatingNavbar";
 import HeroSection from "../components/HeroSection";
 import ProductGrid from "../components/ProductGrid";
-import VideoSection from "../components/VideoSection";
-import PhilosophySection from "../components/PhilosophySection";
 import ResultsSection from "../components/ResultsSection";
-import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -13,10 +10,7 @@ export default function Home() {
       <FloatingNavbar />
       <HeroSection />
       <ProductGrid />
-      <VideoSection />
-      <PhilosophySection />
       <ResultsSection />
-      <ContactSection />
       <Footer />
     </div>
   );

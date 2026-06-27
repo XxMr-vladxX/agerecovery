@@ -149,7 +149,7 @@ export default function TreatmentDetail() {
 
               <div className="mb-16">
                 <Link
-                  to="/#contacto"
+                  to="/contacto"
                   className="inline-block bg-navy-deep text-white px-8 py-4 text-[13.5px] font-medium tracking-wide hover:bg-cyan transition-colors"
                 >
                   Agendar valoración para este tratamiento

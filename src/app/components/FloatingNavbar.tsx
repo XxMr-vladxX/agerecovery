@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import logoSymbol from "../assets/logo-symbol.png";
 
 export default function FloatingNavbar() {
@@ -5,7 +6,7 @@ export default function FloatingNavbar() {
     <nav className="fixed top-0 left-0 w-full z-50 bg-ivory/90 backdrop-blur-md border-b border-navy/10 px-8 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <img src={logoSymbol} alt="Age Recovery" className="h-10 w-auto" />
           <div className="leading-tight">
             <h1 className="text-[19px] font-display font-medium text-navy-deep tracking-tight">
@@ -15,31 +16,34 @@ export default function FloatingNavbar() {
               Medicina estética
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Navegación */}
         <div className="hidden md:flex gap-10 text-[13.5px] text-ink-soft font-medium">
-          <a href="#servicios" className="hover:text-navy transition-colors">
+          <Link to="/medico" className="hover:text-navy transition-colors">
+            Dr. Responsable
+          </Link>
+          <Link to="/tratamientos" className="hover:text-navy transition-colors">
             Tratamientos
-          </a>
-          <a href="#metodo" className="hover:text-navy transition-colors">
+          </Link>
+          <Link to="/metodo" className="hover:text-navy transition-colors">
             Método
-          </a>
-          <a href="#filosofia" className="hover:text-navy transition-colors">
+          </Link>
+          <Link to="/filosofia" className="hover:text-navy transition-colors">
             Filosofía
-          </a>
-          <a href="#resultados" className="hover:text-navy transition-colors">
-            Resultados
-          </a>
+          </Link>
+          <Link to="/contacto" className="hover:text-navy transition-colors">
+            Contacto
+          </Link>
         </div>
 
         {/* CTA */}
-        <a
-          href="#contacto"
+        <Link
+          to="/contacto"
           className="bg-navy-deep text-white px-6 py-[11px] text-[13px] font-medium tracking-wide hover:bg-cyan transition-colors"
         >
           Agendar valoración
-        </a>
+        </Link>
       </div>
     </nav>
   );
