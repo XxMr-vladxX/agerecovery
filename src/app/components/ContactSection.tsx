@@ -1,6 +1,41 @@
+import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
+import { submitContactForm } from "../services/treatmentsService";
+
+type SubmitState = "idle" | "loading" | "success" | "error";
 
 export default function ContactSection() {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [interest, setInterest] = useState("Bioestimulación facial");
+  const [status, setStatus] = useState<SubmitState>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  // Handler asíncrono del formulario: llama a submitContactForm (una de las
+  // funciones documentadas en services/treatmentsService.ts), maneja el
+  // estado de carga mientras "viaja" la solicitud, y muestra éxito o error
+  // según la respuesta de la promesa.
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    setFeedback("");
+
+    try {
+      const result = await submitContactForm({ name, phone, interest });
+      setStatus("success");
+      setFeedback(result.message);
+      setName("");
+      setPhone("");
+    } catch (err) {
+      setStatus("error");
+      setFeedback(
+        err instanceof Error
+          ? err.message
+          : "Ocurrió un error al enviar tu solicitud."
+      );
+    }
+  }
+
   return (
     <section id="contacto" className="py-28 md:py-32 bg-ivory">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -38,7 +73,7 @@ export default function ContactSection() {
 
           <form
             className="relative z-10 bg-white p-9"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
             <div className="mb-[18px]">
               <label
@@ -52,7 +87,10 @@ export default function ContactSection() {
                 type="text"
                 placeholder="Tu nombre"
                 required
-                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                disabled={status === "loading"}
+                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan disabled:opacity-60"
               />
             </div>
             <div className="mb-[18px]">
@@ -67,7 +105,10 @@ export default function ContactSection() {
                 type="tel"
                 placeholder="+52 686 000 0000"
                 required
-                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={status === "loading"}
+                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan disabled:opacity-60"
               />
             </div>
             <div className="mb-[18px]">
@@ -79,7 +120,10 @@ export default function ContactSection() {
               </label>
               <select
                 id="interest"
-                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan"
+                value={interest}
+                onChange={(e) => setInterest(e.target.value)}
+                disabled={status === "loading"}
+                className="w-full border border-navy/10 bg-cyan-pale px-3.5 py-3 text-[14px] text-ink focus:outline focus:outline-[1.5px] focus:outline-cyan disabled:opacity-60"
               >
                 <option>Bioestimulación facial</option>
                 <option>Ácido hialurónico</option>
@@ -91,10 +135,22 @@ export default function ContactSection() {
             </div>
             <button
               type="submit"
-              className="w-full bg-navy-deep text-white py-3.5 text-[13.5px] font-medium tracking-wide hover:bg-cyan transition-colors mt-1.5"
+              disabled={status === "loading"}
+              className="w-full bg-navy-deep text-white py-3.5 text-[13.5px] font-medium tracking-wide hover:bg-cyan transition-colors mt-1.5 disabled:opacity-70"
             >
-              Solicitar valoración
+              {status === "loading" ? "Enviando…" : "Solicitar valoración"}
             </button>
+
+            {status === "success" && (
+              <p className="mt-4 text-[13px] text-cyan font-medium">
+                {feedback}
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mt-4 text-[13px] text-red-600 font-medium">
+                {feedback}
+              </p>
+            )}
           </form>
         </motion.div>
       </div>

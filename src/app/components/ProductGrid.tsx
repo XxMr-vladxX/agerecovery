@@ -1,38 +1,45 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
 const services = [
   {
     num: "01",
+    slug: "bioestimulacion-facial",
     title: "Bioestimulación facial",
     tags: ["Colágeno", "Firmeza"],
     desc: "Activa la producción natural de colágeno y elastina mediante bioestimuladores de última generación, devolviendo densidad y firmeza a la piel desde la dermis profunda.",
   },
   {
     num: "02",
+    slug: "acido-hialuronico",
     title: "Ácido hialurónico de alta densidad",
     tags: ["Volumen", "Contorno"],
     desc: "Restauración de volumen en pómulos, óvalo facial y surcos nasogenianos con técnica de microcánula, priorizando resultados naturales y proporcionados.",
   },
   {
     num: "03",
+    slug: "toxina-botulinica",
     title: "Toxina botulínica terapéutica",
     tags: ["Líneas de expresión", "Prevención"],
     desc: "Suaviza líneas dinámicas en frente, entrecejo y patas de gallo, con dosificación milimétrica que respeta la expresividad natural del rostro.",
   },
   {
     num: "04",
+    slug: "hilos-tensores",
     title: "Hilos tensores PDO",
     tags: ["Lifting", "Sin cirugía"],
     desc: "Efecto lifting inmediato y progresivo mediante hilos reabsorbibles que estimulan colágeno nuevo mientras reposicionan tejidos descendidos.",
   },
   {
     num: "05",
+    slug: "skinbooster",
     title: "Skinbooster y mesoterapia",
     tags: ["Hidratación profunda", "Luminosidad"],
     desc: "Hidratación intradérmica de larga duración que mejora textura, elasticidad y luminosidad sin alterar volúmenes faciales.",
   },
   {
     num: "06",
+    slug: "plasma-rico-plaquetas",
     title: "Rejuvenecimiento con plasma rico en plaquetas",
     tags: ["Regeneración celular", "100% autólogo"],
     desc: "Tu propio plasma concentrado, reinyectado para acelerar la regeneración celular y mejorar la calidad general de la piel de forma biocompatible.",
@@ -83,9 +90,11 @@ export default function ProductGrid() {
                 {s.num}
               </div>
               <div>
-                <h3 className="font-display text-[24px] md:text-[25px] font-medium text-navy-deep mb-3 tracking-tight">
-                  {s.title}
-                </h3>
+                <Link to={`/tratamientos/${s.slug}`}>
+                  <h3 className="font-display text-[24px] md:text-[25px] font-medium text-navy-deep mb-3 tracking-tight hover:text-cyan transition-colors">
+                    {s.title}
+                  </h3>
+                </Link>
                 <div className="flex gap-2 flex-wrap">
                   {s.tags.map((tag) => (
                     <span
@@ -101,12 +110,12 @@ export default function ProductGrid() {
                 <p className="text-[14.5px] leading-relaxed text-ink-soft font-light">
                   {s.desc}
                 </p>
-                <a
-                  href="#contacto"
+                <Link
+                  to={`/tratamientos/${s.slug}`}
                   className="inline-flex items-center gap-2 mt-4 text-[13px] font-medium text-navy-deep border-b border-transparent hover:border-navy-deep hover:text-cyan transition-colors"
                 >
                   Conocer protocolo →
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
